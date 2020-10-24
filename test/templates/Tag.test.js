@@ -2,6 +2,7 @@ import TagTemplate from '../../lib/templates/Tag'
 import TextTemplate from '../../lib/templates/Text'
 
 import { assert } from 'chai'
+import sinon from 'sinon'
 
 import { createTestDom, domToString } from '../support/testDom'
 
@@ -57,6 +58,33 @@ describe('Tag Templates', () => {
       assert.equal(
         domToString(node), 
         '<i class="fab fa-accessible-icon" id="wheelchair"></i>'
+      )
+    })
+
+    it('attaches events via a declarative publisher', () => {
+      const publish = sinon.fake()
+      const attributes = { href: '#ohai', onClick: 'navigate'}
+      const template = new TagTemplate('a', attributes)
+
+      const document = createTestDom()
+      const node = template.render({ document, publish })
+      node.click()
+
+      assert.equal(publish.getCall(0).firstArg, 'navigate')
+      assert.instanceOf(
+        publish.getCall(0).lastArg, 
+        document.defaultView.MouseEvent
+      )
+    })
+
+    it('renders text children', () => {
+      const template = new TagTemplate('h1', null, 'Hello World')
+      const document = createTestDom()
+
+      const node = template.render({ document })
+      assert.equal(
+        domToString(node), 
+        '<h1>Hello World</h1>'
       )
     })
   })
