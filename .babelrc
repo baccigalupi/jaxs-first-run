@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "pragma": "jsx",
+        "pragmaFrag": "jsx.fragment"
+      }
+    ],
+    "@babel/plugin-transform-modules-commonjs"
+  ]  
+}
