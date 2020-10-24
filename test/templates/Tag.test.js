@@ -1,0 +1,63 @@
+import TagTemplate from '../../lib/templates/Tag'
+import TextTemplate from '../../lib/templates/Text'
+
+import { assert } from 'chai'
+
+import { createTestDom, domToString } from '../support/testDom'
+
+describe('Tag Templates', () => {
+  it('without passed attributes generates objects for attributes and events', () => {
+    const template = new TagTemplate('h1', null, 'Hello World')
+
+    assert.deepEqual(template.attributes, {})
+    assert.deepEqual(template.events, {})
+  })
+  
+  it('normalized text children to a TextTemplate', () => {
+    const template = new TagTemplate('h1', null, 'Hello World')
+    
+    assert.instanceOf(template.children[0], TextTemplate)
+    assert.equal(template.children[0].value, 'Hello World')
+  })
+
+  it('separates events from attributes', () => {
+    const template = new TagTemplate(
+      'h1', {
+        class: 'small-text',
+        onclick: 'onClick:deployBomb',
+        onHover: 'onHover:alertBomb'
+      },
+      'Hello World'
+    )
+
+    assert.deepEqual(template.attributes, {class: 'small-text'})
+    assert.deepEqual(template.events, {
+      click: 'onClick:deployBomb',
+      hover: 'onHover:alertBomb'
+    })
+  })
+
+  describe('rendering', () => {
+    it('renders an html tag with no attributes, events or content', () => {
+      const template = new TagTemplate('h1', null, null)
+
+      const document = createTestDom()
+      const node = template.render({ document })
+
+      assert.equal(domToString(node), '<h1></h1>')
+    })
+
+    it('renders attributes into the tag', () => {
+      const attributes = { class: 'fab fa-accessible-icon', id: 'wheelchair'}
+      const template = new TagTemplate('i', attributes)
+
+      const document = createTestDom()
+      const node = template.render({ document })
+
+      assert.equal(
+        domToString(node), 
+        '<i class="fab fa-accessible-icon" id="wheelchair"></i>'
+      )
+    })
+  })
+})
