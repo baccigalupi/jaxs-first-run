@@ -1,4 +1,4 @@
-import createBus from '../lib/messageBus'
+import createBus from '../../lib/app/messageBus'
 
 import { assert } from 'chai'
 
