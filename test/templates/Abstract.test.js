@@ -1,11 +1,8 @@
 import jsx from '../../lib/jsx'
 
 import AbstractTemplate from '../../lib/templates/Abstract'
-import TagTemplate from '../../lib/templates/Tag'
-import TextTemplate from '../../lib/templates/Text'
 
 import { assert } from 'chai'
-import sinon from 'sinon'
 
 import { createTestDom, domToString } from '../support/testDom'
 
@@ -76,6 +73,29 @@ describe('Abstract Templates', () => {
       }
   
       const template = <Greeting user={user} />
+  
+      const document = createTestDom()
+      const node = template.render({ document })
+      assert.equal(
+        domToString(node),
+        '<header>Hello <div><b>BACCIGALUPI</b>, Kane</div></header>'
+      )
+    })
+  })
+
+  describe('with children', () => {
+    it('renders them correctly', () => {
+      const EmphasizedName = ({name}) => <b>{name.toUpperCase()}</b>
+      const AccountingName = ({firstName, lastName}) => (
+        <div><EmphasizedName name={lastName}/>, {firstName}</div>
+      )
+      const Greeting = ({children}) => <header>Hello {children}</header>
+  
+      const template = (
+        <Greeting>
+          <AccountingName firstName='Kane' lastName='Baccigalupi'/>
+        </Greeting>
+      )
   
       const document = createTestDom()
       const node = template.render({ document })
