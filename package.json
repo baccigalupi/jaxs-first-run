@@ -17,8 +17,10 @@
     "@babel/plugin-transform-react-jsx": "^7.12.1",
     "@babel/register": "^7.12.1",
     "chai": "^4.2.0",
+    "cypress": "^5.4.0",
     "jsdom": "^16.4.0",
     "mocha": "^8.2.0",
+    "parcel": "^1.12.4",
     "sinon": "^9.2.0"
   },
   "scripts": {
