@@ -1,3 +1,5 @@
+import jsx from '../../lib/jsx'
+
 import TagTemplate from '../../lib/templates/Tag'
 import TextTemplate from '../../lib/templates/Text'
 
@@ -87,5 +89,16 @@ describe('Tag Templates', () => {
         '<h1>Hello World</h1>'
       )
     })
+  })
+
+  it('jsx correctly converts to an html tag', () => {
+    const template = <h1>Hello World</h1>
+    const document = createTestDom()
+
+    const node = template.render({ document })
+    assert.equal(
+      domToString(node), 
+      '<h1>Hello World</h1>'
+    ) 
   })
 })
