@@ -1,0 +1,4 @@
+#!/bin/bash
+
+node ./cypress/support/bin/buildHtml.js $1
+yarn parcel server ./cypress/support/apps/index.html
