@@ -64,4 +64,41 @@ describe('Fragment Templates', () => {
       '<section class="page-frame"><h2>Hi <em>Kane</em>!</h2><p>It\'s great having you here with us.</p><p>Thanks for joining!</p></section>'
     )
   })
+
+  it('correctly renders nested fragments', () => {
+    const WelcomeText = ({name, children}) => {
+      return (
+        <>
+          <h2>Hi <em>{name}</em>!</h2>
+          <p>It's great having you here with us.</p>
+          <p>Thanks for joining!</p>
+          { children }
+        </>
+      )
+    }
+
+    const Discount = () => {
+      return (
+        <>
+          <hr />
+          <h4>Get your discount thingy for joining</h4>
+          <p>Act now and get your thingy for 20% off!</p>
+        </>
+      )
+    }
+
+    const template = (
+      <WelcomeText name='Amir'>
+        <Discount />
+      </WelcomeText>
+    )
+
+    const document = createTestDom()
+    const dom = template.render({ document })
+
+    assert.include(
+      domToString(dom),
+      '</p><hr><h4>Get your discount thingy for joining</h4><p>Act now'
+    )
+  })
 })
