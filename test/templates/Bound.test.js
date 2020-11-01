@@ -72,4 +72,59 @@ describe('Bound Templates', () => {
       '<div><h1>Hola Kane!</h1><p>We are pleased to have a member of the family.</p></div>'
     )
   })
+
+  it('works with both state and props', () => {
+    const TabNavItem = ({href, currentPath, description}) => {
+      const active = currentPath === href ? ' active' : ''
+      const classList = `nav-link${active}`
+      return (
+        <li class='nav-item'>
+          <a href={href} class={classList}>{description}</a>
+        </li>
+      )
+    }
+
+    const viewModel = (state) => {
+      return {
+        currentPath: state.app.location.path 
+      }
+    }
+    
+    const state = {
+      app: {
+        location: {
+          path: '/hello-nav-world'
+        }
+      }
+    }
+
+    const BoundTemplate = bind(TabNavItem, viewModel)
+
+    let template = (
+      <BoundTemplate
+        href='/navigation'
+        description='Navigation'
+      />
+    )
+
+    const document = createTestDom()
+    let node = template.render({ document, state })
+    assert.equal(
+      domToString(node), 
+      '<li class="nav-item"><a href="/navigation" class="nav-link">Navigation</a></li>'
+    )
+
+    template = (
+      <BoundTemplate
+        href='/hello-nav-world'
+        description='Hello World'
+      />
+    )
+
+    node = template.render({ document, state })
+    assert.equal(
+      domToString(node), 
+      '<li class="nav-item"><a href="/hello-nav-world" class="nav-link active">Hello World</a></li>'
+    )
+  })
 })

@@ -1,8 +1,4 @@
-const fs = require('fs')
-
-const templateName = process.argv[2]
-
-const template = `<html>
+<html>
   <head>
     <link
       rel="stylesheet"
@@ -12,8 +8,6 @@ const template = `<html>
     >
   <body>
     <div id='app'></div>
-    <script src="./${templateName}.js"></script>
+    <script src="./load.js"></script>
   </body>
-</html>`
-
-fs.writeFileSync(`${__dirname}/../apps/index.html`, template)
+</html>

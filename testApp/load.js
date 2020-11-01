@@ -1,5 +1,5 @@
 import app from './app'
-import Template from './views/templates/Render'
+import Template from './views/templates/Pages/Home'
 
 app.render({
   selector: '#app',
