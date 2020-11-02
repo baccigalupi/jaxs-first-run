@@ -1,1 +1,7 @@
-export default (state) => state // no-op
+import { combineReducers } from 'redux'
+
+import app from './app'
+
+export default combineReducers({
+  app
+})
