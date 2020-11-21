@@ -5,7 +5,13 @@ export const TabNavItem = ({href, currentPath, description}) => {
   const classList = `nav-link${active}`
   return (
     <li class='nav-item'>
-      <a href={href} class={classList}>{description}</a>
+      <a
+        href={href}
+        class={classList}
+        onClick='navigate'
+      >
+        {description}
+      </a>
     </li>
   )
 }

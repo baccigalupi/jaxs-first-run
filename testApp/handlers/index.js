@@ -1,1 +1,5 @@
-export default [] // no-op
+import { linkSubscription } from '../../lib/handlers/navigation'
+
+export default [
+  linkSubscription
+]
