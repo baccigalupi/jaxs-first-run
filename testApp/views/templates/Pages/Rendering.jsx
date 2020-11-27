@@ -1,6 +1,5 @@
 import jsx from '../../../../lib/jsx'
 
-import Layout from '../Layout'
 import ProfileAside from '../Layout/ProfileAside'
 
 const SongStuff = () => {
@@ -30,20 +29,11 @@ const SongStuff = () => {
   )
 }
 
-const BasicRendering = () => {
+export default () => {
   return (
     <div class='row'>
       <SongStuff />
       <ProfileAside />
     </div>
-  )
-}
-
-
-export default () => {
-  return (
-    <Layout>
-      <BasicRendering />
-    </Layout>
   )
 }

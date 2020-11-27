@@ -1,32 +1,14 @@
 import jsx from '../../../lib/jsx'
-
-import {
-  TabBar, TabNavItem
-} from '../boundTemplates/Layout/Tabs'
+import TopNav from './Layout/TopNav'
 
 export default ({children}) => {
   return (
     <div class="container mt-4">
-      <TabBar>
-        <TabNavItem
-          description='Rendering'
-          href='/'
-        />
-        <TabNavItem
-          href='/counter'
-          description='State change'
-        />
-        <TabNavItem
-          href='/navigation'
-          description='Navigation'
-        />
-        <TabNavItem
-          href='/sign-in'
-          description='Sign in'
-        />
-      </TabBar>
-      <div class='border-right border-left border-bottom'>
-        {children}
+      <TopNav />
+      <div class='tab-body border-right border-left border-bottom'>
+        <div class='container'>
+          {children}
+        </div>
       </div>
     </div>
   )
