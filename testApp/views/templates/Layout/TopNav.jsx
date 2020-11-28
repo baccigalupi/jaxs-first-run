@@ -19,6 +19,10 @@ export default () => {
         href='/sign-in'
         description='Sign in'
       />
+      <TabNavItem
+        href='/users/42'
+        description='Some user details'
+      />
     </TabBar>
   )
 }
