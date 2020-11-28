@@ -50,7 +50,7 @@ describe('handlers navigation', () => {
       global.window = originalWindow
     })
 
-    it.only('publishes navigation events when they occur on the window', (done) => {
+    it('publishes navigation events when they occur on the window', (done) => {
       const publish = sinon.fake()
       const document = createTestDom()
       global.window = document.defaultView
