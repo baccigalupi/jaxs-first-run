@@ -1,5 +1,6 @@
-import { JSDOM } from "jsdom"
-import { isArray } from "../../lib/utilities/is"
+import { JSDOM } from 'jsdom'
+import sinon from 'sinon'
+import { isArray } from '../../lib/utilities/is'
 
 const defaultContent = "<div id='app'></div>"
 
@@ -29,3 +30,11 @@ const wrapElements = (elements) => {
   })
   return wrapper
 } 
+
+export const mockEvent = (target) => {
+  return {
+    preventDefault: sinon.fake(),
+    stopPropagation: sinon.fake(),
+    target
+  }
+}

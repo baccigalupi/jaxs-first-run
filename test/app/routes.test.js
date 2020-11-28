@@ -41,7 +41,6 @@ describe('routes', () => {
     assert.equal(route.matches[2], 'w')
 
     route = pages.getRoute('/hiya')
-    console.log(route)
     assert.equal(route.component, Hello)
     assert.equal(route.matches[1], 'hi')
     assert.equal(route.matches[2], 'ya')
