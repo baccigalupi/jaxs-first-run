@@ -26,7 +26,8 @@
   },
   "scripts": {
     "test:serve": "parcel serve testApp/index.html",
-    "test": "yarn test:unit",
-    "test:unit": "mocha --recursive --require @babel/register ./test/**/*.test.js ./test/*.test.js"
+    "test": "yarn test:unit && yarn test:integration",
+    "test:unit": "mocha --recursive --require @babel/register ./test/**/*.test.js ./test/*.test.js",
+    "test:integration": "cypress run"
   }
 }
