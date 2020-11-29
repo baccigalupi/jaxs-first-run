@@ -26,7 +26,7 @@
   },
   "scripts": {
     "test:serve": "parcel serve testApp/index.html",
-    "test": "yarn test:unit && yarn test:integration",
+    "test": "yarn test:unit && yarn test:integration && yarn lint",
     "test:unit": "mocha --recursive --require @babel/register ./test/**/*.test.js ./test/*.test.js",
     "test:integration": "cypress run",
     "lint": "prettier --check ./lib ./test",
