@@ -3,7 +3,6 @@ import { findTag, findHref } from '../../lib/utilities/dom'
 import { createTestDom, mockEvent } from '../support/testDom'
 import { assert } from 'chai'
 
-
 describe('DOM utilities', () => {
   describe('findHref', () => {
     it('finds the href when it is the direct target node', () => {
@@ -11,7 +10,7 @@ describe('DOM utilities', () => {
       const node = document.getElementById('find-me')
       assert.equal(findHref(node), '/foo')
     })
-    
+
     it('finds the href at the nearest parent when not available on target node', () => {
       const document = createTestDom(
         '<a id="find-me" href="/foo"><ul><li id="click-me">Click me</li></ul></a>'

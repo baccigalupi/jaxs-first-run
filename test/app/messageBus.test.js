@@ -23,16 +23,22 @@ describe('message bus', () => {
 
     const bus = createBus()
     bus.subscribe('click', (payload) => {
-      listenerCalls.push({message: 'first callback', payload})
+      listenerCalls.push({ message: 'first callback', payload })
     })
     bus.subscribe('click', (payload) => {
-      listenerCalls.push({message: 'second callback', payload})
+      listenerCalls.push({ message: 'second callback', payload })
     })
 
     bus.publish('click', 'click bate')
 
-    assert.deepEqual(listenerCalls[0], {message: 'first callback', payload: 'click bate'})
-    assert.deepEqual(listenerCalls[1], {message: 'second callback', payload: 'click bate'})
+    assert.deepEqual(listenerCalls[0], {
+      message: 'first callback',
+      payload: 'click bate'
+    })
+    assert.deepEqual(listenerCalls[1], {
+      message: 'second callback',
+      payload: 'click bate'
+    })
   })
 
   it('works with regex event registration', () => {
@@ -40,19 +46,19 @@ describe('message bus', () => {
 
     const bus = createBus()
     bus.subscribe(/store:.+/, (payload, event) => {
-      listenerCalls.push({payload, event})
+      listenerCalls.push({ payload, event })
     })
-    
+
     bus.publish('store:updateAboutMeForm', 'input')
     bus.publish('store:clearCurrentUser', 'user-id')
 
     assert.deepEqual(listenerCalls[0], {
-      payload: 'input', 
+      payload: 'input',
       event: 'store:updateAboutMeForm'
     })
 
     assert.deepEqual(listenerCalls[1], {
-      payload: 'user-id', 
+      payload: 'user-id',
       event: 'store:clearCurrentUser'
     })
   })
@@ -67,7 +73,7 @@ describe('message bus', () => {
     bus.subscribe('store:updateAboutMeForm', () => {
       listenerCalls.push('exact call')
     })
-    
+
     bus.publish('store:updateAboutMeForm', 'whatever')
 
     assert.deepEqual(listenerCalls, ['exact call', 'fuzzy call'])
@@ -78,7 +84,9 @@ describe('message bus', () => {
     const bus = createBus({
       warn: (message) => messages.push(message)
     })
-    bus.subscribe('click', () => {/*no-op*/})
+    bus.subscribe('click', () => {
+      /*no-op*/
+    })
     bus.publish('click', 'hello')
     bus.publish('clickMe', 'hello?')
 
@@ -90,7 +98,9 @@ describe('message bus', () => {
     const bus = createBus({
       warn: (message) => messages.push(message)
     })
-    bus.subscribe(/click.*/, () => {/*no-op*/})
+    bus.subscribe(/click.*/, () => {
+      /*no-op*/
+    })
     bus.publish('click', 'hello')
     bus.publish('clickMe', 'hello?')
 

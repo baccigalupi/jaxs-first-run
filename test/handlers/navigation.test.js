@@ -1,7 +1,4 @@
-import {
-  attachHistoryListener,
-  navigate
-} from '../../lib/handlers/navigation'
+import { attachHistoryListener, navigate } from '../../lib/handlers/navigation'
 import events from '../../lib/store/events'
 
 import { assert } from 'chai'
@@ -15,7 +12,7 @@ describe('handlers navigation', () => {
         pushState: sinon.fake()
       }
     })
-  
+
     afterEach(() => {
       global.history = undefined
     })
@@ -59,9 +56,9 @@ describe('handlers navigation', () => {
       window.history.pushState({}, null, '/next-page')
       window.history.back()
 
-      // This setTimeout is a bit of a hack, process.nextTick doesn't provide 
+      // This setTimeout is a bit of a hack, process.nextTick doesn't provide
       // enough time, and unlike other async things, we don't have a handle on
-      // the callback/promise. We could subscribe to the event to verify 
+      // the callback/promise. We could subscribe to the event to verify
       // instead.
       setTimeout(() => {
         assert.equal(publish.callCount, 1)

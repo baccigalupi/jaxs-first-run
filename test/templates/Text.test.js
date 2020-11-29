@@ -9,7 +9,7 @@ describe('Text Templates', () => {
     const document = createTestDom()
     const template = new TextTemplate('Hello World')
 
-    const node = template.render({document})
+    const node = template.render({ document })
     assert.equal(node.data, 'Hello World')
   })
 })

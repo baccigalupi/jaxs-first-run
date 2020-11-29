@@ -4,13 +4,12 @@ import { isArray } from '../../lib/utilities/is'
 
 const defaultContent = "<div id='app'></div>"
 
-let currentDom;
+let currentDom
 
 export const createTestDom = (content = defaultContent) => {
-  const dom =  new JSDOM(
-    `<!DOCTYPE html><body>${content}<body>`, 
-    {url: "http://localhost"}
-  )
+  const dom = new JSDOM(`<!DOCTYPE html><body>${content}<body>`, {
+    url: 'http://localhost'
+  })
   currentDom = dom
   return dom.window.document
 }
@@ -29,7 +28,7 @@ const wrapElements = (elements) => {
     wrapper.append(element)
   })
   return wrapper
-} 
+}
 
 export const mockEvent = (target) => {
   return {

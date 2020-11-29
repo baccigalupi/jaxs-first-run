@@ -15,17 +15,18 @@ describe('Tag Templates', () => {
     assert.deepEqual(template.attributes, {})
     assert.deepEqual(template.events, {})
   })
-  
+
   it('normalized text children to a TextTemplate', () => {
     const template = new TagTemplate('h1', null, 'Hello World')
-    
+
     assert.instanceOf(template.children[0], TextTemplate)
     assert.equal(template.children[0].value, 'Hello World')
   })
 
   it('separates events from attributes', () => {
     const template = new TagTemplate(
-      'h1', {
+      'h1',
+      {
         class: 'small-text',
         onclick: 'onClick:deployBomb',
         onHover: 'onHover:alertBomb'
@@ -33,7 +34,7 @@ describe('Tag Templates', () => {
       'Hello World'
     )
 
-    assert.deepEqual(template.attributes, {class: 'small-text'})
+    assert.deepEqual(template.attributes, { class: 'small-text' })
     assert.deepEqual(template.events, {
       click: 'onClick:deployBomb',
       hover: 'onHover:alertBomb'
@@ -51,21 +52,21 @@ describe('Tag Templates', () => {
     })
 
     it('renders attributes into the tag', () => {
-      const attributes = { class: 'fab fa-accessible-icon', id: 'wheelchair'}
+      const attributes = { class: 'fab fa-accessible-icon', id: 'wheelchair' }
       const template = new TagTemplate('i', attributes)
 
       const document = createTestDom()
       const node = template.render({ document })
 
       assert.equal(
-        domToString(node), 
+        domToString(node),
         '<i class="fab fa-accessible-icon" id="wheelchair"></i>'
       )
     })
 
     it('attaches events via a declarative publisher', () => {
       const publish = sinon.fake()
-      const attributes = { href: '#ohai', onClick: 'navigate'}
+      const attributes = { href: '#ohai', onClick: 'navigate' }
       const template = new TagTemplate('a', attributes)
 
       const document = createTestDom()
@@ -74,7 +75,7 @@ describe('Tag Templates', () => {
 
       assert.equal(publish.getCall(0).firstArg, 'navigate')
       assert.instanceOf(
-        publish.getCall(0).lastArg, 
+        publish.getCall(0).lastArg,
         document.defaultView.MouseEvent
       )
     })
@@ -84,10 +85,7 @@ describe('Tag Templates', () => {
       const document = createTestDom()
 
       const node = template.render({ document })
-      assert.equal(
-        domToString(node), 
-        '<h1>Hello World</h1>'
-      )
+      assert.equal(domToString(node), '<h1>Hello World</h1>')
     })
   })
 
@@ -96,9 +94,6 @@ describe('Tag Templates', () => {
     const document = createTestDom()
 
     const node = template.render({ document })
-    assert.equal(
-      domToString(node), 
-      '<h1>Hello World</h1>'
-    ) 
+    assert.equal(domToString(node), '<h1>Hello World</h1>')
   })
 })

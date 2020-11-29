@@ -7,7 +7,7 @@ import { createTestDom, domToString } from '../support/testDom'
 describe('Fragment Templates', () => {
   it('renders simple tag templates', () => {
     const template = (
-      <> 
+      <>
         <span>Hello</span>
         <b>World</b>
       </>
@@ -16,37 +16,29 @@ describe('Fragment Templates', () => {
     const document = createTestDom()
     const nodes = template.render({ document })
 
-    assert.equal(
-      domToString(nodes[0]),
-      '<span>Hello</span>'
-    )
+    assert.equal(domToString(nodes[0]), '<span>Hello</span>')
 
-    assert.equal(
-      domToString(nodes[1]),
-      '<b>World</b>'
-    )
+    assert.equal(domToString(nodes[1]), '<b>World</b>')
   })
 
   it('renders it as part of a larger complex view', () => {
-    const WelcomeText = ({name}) => {
+    const WelcomeText = ({ name }) => {
       return (
         <>
-          <h2>Hi <em>{name}</em>!</h2>
+          <h2>
+            Hi <em>{name}</em>!
+          </h2>
           <p>It's great having you here with us.</p>
           <p>Thanks for joining!</p>
         </>
       )
     }
 
-    const PageFrame = ({children}) => {
-      return (
-        <section class='page-frame'>
-          {children}
-        </section>
-      )
+    const PageFrame = ({ children }) => {
+      return <section class='page-frame'>{children}</section>
     }
 
-    const WelcomePage = ({name}) => {
+    const WelcomePage = ({ name }) => {
       return (
         <PageFrame>
           <WelcomeText name={name} />
@@ -66,13 +58,15 @@ describe('Fragment Templates', () => {
   })
 
   it('correctly renders nested fragments', () => {
-    const WelcomeText = ({name, children}) => {
+    const WelcomeText = ({ name, children }) => {
       return (
         <>
-          <h2>Hi <em>{name}</em>!</h2>
+          <h2>
+            Hi <em>{name}</em>!
+          </h2>
           <p>It's great having you here with us.</p>
           <p>Thanks for joining!</p>
-          { children }
+          {children}
         </>
       )
     }

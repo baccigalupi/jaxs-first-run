@@ -17,17 +17,19 @@
     "@babel/plugin-transform-react-jsx": "^7.12.1",
     "@babel/register": "^7.12.1",
     "chai": "^4.2.0",
-    "concurrently": "^5.3.0",
     "cypress": "^5.4.0",
     "jsdom": "^16.4.0",
     "mocha": "^8.2.0",
     "parcel": "^1.12.4",
+    "prettier": "^2.2.1",
     "sinon": "^9.2.0"
   },
   "scripts": {
     "test:serve": "parcel serve testApp/index.html",
     "test": "yarn test:unit && yarn test:integration",
     "test:unit": "mocha --recursive --require @babel/register ./test/**/*.test.js ./test/*.test.js",
-    "test:integration": "cypress run"
+    "test:integration": "cypress run",
+    "lint": "prettier --check ./lib ./test",
+    "lint:fix": "prettier --write ./lib ./test"
   }
 }

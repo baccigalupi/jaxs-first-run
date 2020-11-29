@@ -9,7 +9,7 @@ describe('location reducer', () => {
 
   it('builds an initial state from the global location', () => {
     global.location = {
-      hash: '', 
+      hash: '',
       pathname: '/',
       search: ''
     }
@@ -24,11 +24,11 @@ describe('location reducer', () => {
 
   it('parses query params', () => {
     global.location = {
-      hash: '', 
+      hash: '',
       pathname: '/',
       search: '?foo=bar&zardoz=false'
     }
-    
+
     const state = reducer()
     assert.deepEqual(state, {
       hash: '',
@@ -42,11 +42,11 @@ describe('location reducer', () => {
 
   it('extracts the hash', () => {
     global.location = {
-      hash: '#pound', 
+      hash: '#pound',
       pathname: '/',
       search: ''
     }
-    
+
     const state = reducer()
     assert.deepEqual(state, {
       hash: 'pound',
@@ -57,11 +57,11 @@ describe('location reducer', () => {
 
   it('renames the pathname to path', () => {
     global.location = {
-      hash: '', 
+      hash: '',
       pathname: '/goodbye/zardoz',
       search: ''
     }
-    
+
     const state = reducer()
     assert.deepEqual(state, {
       hash: '',
