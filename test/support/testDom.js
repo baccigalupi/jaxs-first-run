@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom'
 import sinon from 'sinon'
-import { isArray } from '../../lib/utilities/is'
+import { isArray } from '../../lib/utilities/array'
 
 const defaultContent = "<div id='app'></div>"
 
