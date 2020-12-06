@@ -19,8 +19,8 @@ describe('Tag Templates', () => {
   it('normalized text children to a TextTemplate', () => {
     const template = new TagTemplate('h1', null, 'Hello World')
 
-    assert.instanceOf(template.children[0], TextTemplate)
-    assert.equal(template.children[0].value, 'Hello World')
+    assert.instanceOf(template.children.collection[0], TextTemplate)
+    assert.equal(template.children.collection[0].value, 'Hello World')
   })
 
   it('separates events from attributes', () => {
