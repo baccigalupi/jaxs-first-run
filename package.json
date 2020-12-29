@@ -20,12 +20,12 @@
     "cypress": "^5.4.0",
     "jsdom": "^16.4.0",
     "mocha": "^8.2.0",
-    "parcel": "^1.12.4",
+    "poi": "^12.10.3",
     "prettier": "^2.2.1",
     "sinon": "^9.2.0"
   },
   "scripts": {
-    "test:serve": "parcel serve testApp/index.html",
+    "test:serve": "poi testApp/index.html --serve",
     "test": "yarn test:unit && yarn test:integration && yarn lint",
     "test:unit": "mocha --recursive --require @babel/register ./test/**/*.test.js",
     "test:integration": "cypress run",
