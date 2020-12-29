@@ -4,6 +4,7 @@ node_modules
 dist
 cypress/integration/examples
 cypress/videos
+cypress/screenshots
 .parcel-cache
 
 .vscode
