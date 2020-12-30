@@ -41,7 +41,7 @@ describe('Rerendering combined template type', () => {
         domToString(node),
         '<div><h1>Todo</h1><ul><li class="backlog">Re-rendering</li><li class="complete">Rendering</li></ul></div>'
       )
-  
+
       template.rerender({ document, state })
       assert.equal(
         domToString(node),
@@ -61,12 +61,12 @@ describe('Rerendering combined template type', () => {
         domToString(node),
         '<div><h1>Todo</h1><ul><li class="backlog">Re-rendering</li><li class="complete">Rendering</li></ul></div>'
       )
-  
+
       items = [
         { state: 'wip', description: 'Re-rendering' },
         { state: 'complete', description: 'Rendering' }
       ]
-      template.rerender({ document, props: { items }})
+      template.rerender({ document, props: { items } })
       assert.equal(
         domToString(node),
         '<div><h1>Todo</h1><ul><li class="wip">Re-rendering</li><li class="complete">Rendering</li></ul></div>'
