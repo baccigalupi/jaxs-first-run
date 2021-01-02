@@ -2,7 +2,9 @@ import jsx from '../../../../lib/jsx'
 
 import ProfileAside from '../Layout/ProfileAside'
 
-const Counter = ({counter}) => {
+const Counter = (props) => {
+  console.log('Counter props in view', props)
+
   return (
     <div class='col'>
       <div class='p-4'>
@@ -11,7 +13,7 @@ const Counter = ({counter}) => {
           <div class='row '>
             <button class='btn btn-success col' onClick='data:incrementCounter'>+</button>
             <h2 class='text-center col-10'>
-              <span class='border pad-6'>{counter}</span>
+              <span class='border px-3 py-1'>{props.counter}</span>
             </h2>
             <button class='btn btn-danger col' onClick='data:decrementCounter'>-</button>
           </div>
@@ -21,10 +23,11 @@ const Counter = ({counter}) => {
   )
 }
 
-export default () => {
+export default (props) => {
+  console.log('Counter props in wrapper', props)
   return (
     <div class='row'>
-      <Counter />
+      <Counter counter={props.counter}/>
       <ProfileAside />
     </div>
   )

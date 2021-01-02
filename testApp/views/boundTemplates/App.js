@@ -18,7 +18,7 @@ const pages = routes()
 const viewModel = (state) => {
   const path = state.app.location.path 
   const route = pages.getRoute(path)
-  
+
   return {
     Page: route.component,
     matches: route.matches
