@@ -3,8 +3,6 @@ import jsx from '../../../../lib/jsx'
 import ProfileAside from '../Layout/ProfileAside'
 
 const Counter = (props) => {
-  console.log('Counter props in view', props)
-
   return (
     <div class='col'>
       <div class='p-4'>
@@ -24,7 +22,7 @@ const Counter = (props) => {
 }
 
 export default (props) => {
-  console.log('Counter props in wrapper', props)
+  console.log('rendering Counter view')
   return (
     <div class='row'>
       <Counter counter={props.counter}/>
