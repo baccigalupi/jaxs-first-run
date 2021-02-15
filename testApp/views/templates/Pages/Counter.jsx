@@ -22,7 +22,6 @@ const Counter = (props) => {
 }
 
 export default (props) => {
-  console.log('rendering Counter view')
   return (
     <div class='row'>
       <Counter counter={props.counter}/>

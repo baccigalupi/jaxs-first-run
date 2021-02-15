@@ -30,8 +30,6 @@ const SongStuff = () => {
 }
 
 export default () => {
-  console.log('rendering Rendering home view')
-
   return (
     <div class='row'>
       <SongStuff />
