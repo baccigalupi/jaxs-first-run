@@ -24,4 +24,25 @@ context('Rerendering on state change', () => {
     cy.get('h1')
       .should('contain', 'User details')
   })
+
+  it('changes page data with click events', () => {
+    cy.visit('http://localhost:4000/counter')
+      .get('h1')
+      .should('contain', 'Let\'s increment something')
+
+    cy.get('.counter-value')
+      .contains('0')
+
+    cy.get('button.increment')
+      .click()
+
+    cy.get('.counter-value')
+      .contains('1')
+
+    cy.get('button.decrement')
+      .click()
+
+    cy.get('.counter-value')
+      .contains('0')
+  })
 })
