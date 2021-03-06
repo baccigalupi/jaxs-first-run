@@ -1,4 +1,5 @@
-import { createReducer, composeReducers } from '../../lib/store/reducerUtilities'
+import { store } from '../../lib/jaxs'
+const { createReducer, composeReducers } = store
 
 const initialState = 0
 

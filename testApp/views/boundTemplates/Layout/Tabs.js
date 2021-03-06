@@ -1,4 +1,4 @@
-import { bind } from '../../../../lib/templates/Bound'
+import { bind } from '../../../../lib/jaxs'
 import {
   TabBar,
   TabNavItem as Template

@@ -1,4 +1,4 @@
-import jsx from '../../../../lib/jsx'
+import { jsx } from '../../../../lib/jaxs'
 
 export const TabNavItem = ({href, currentPath, description}) => {
   const active = currentPath === href ? ' active' : ''

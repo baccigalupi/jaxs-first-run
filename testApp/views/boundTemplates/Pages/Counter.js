@@ -1,4 +1,4 @@
-import { bind } from '../../../../lib/templates/Bound'
+import { bind } from '../../../../lib/jaxs'
 import Template from '../../templates/Pages/Counter'
 
 const viewModel = (state) => {

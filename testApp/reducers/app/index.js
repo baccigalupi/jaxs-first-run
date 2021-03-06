@@ -1,9 +1,4 @@
 import { combineReducers } from 'redux'
+import { reducers } from '../../../lib/jaxs'
 
-import location from '../../../lib/reducers/location'
-import token from '../../../lib/reducers/token'
-
-export default combineReducers({
-  location,
-  token
-})
+export default combineReducers(reducers)

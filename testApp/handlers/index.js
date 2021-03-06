@@ -1,7 +1,6 @@
-import { linkSubscription } from '../../lib/handlers/navigation'
-import { noOpSubscription } from '../../lib/handlers/noOp'
+import { subscriptions } from '../../lib/jaxs'
 
 export default [
-  linkSubscription,
-  noOpSubscription
+  subscriptions.linkSubscription,
+  subscriptions.noOpSubscription
 ]

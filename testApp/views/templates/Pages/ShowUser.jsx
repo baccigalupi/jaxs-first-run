@@ -1,4 +1,4 @@
-import jsx from '../../../../lib/jsx'
+import { jsx } from '../../../../lib/jaxs'
 
 export default () => {
   return (

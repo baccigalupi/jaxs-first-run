@@ -1,4 +1,5 @@
-import jsx from '../../../../lib/jsx'
+import { jsx } from '../../../../lib/jaxs'
+
 
 import ProfileAside from '../Layout/ProfileAside'
 
