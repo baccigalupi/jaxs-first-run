@@ -4,6 +4,7 @@
   "description": "Front-end framework with reductive state and declarative jsx",
   "repository": "https://www.github.com/baccigalupi/jaxs",
   "author": "Kane Baccigalupi",
+  "main": "lib/jaxs.js",
   "license": "MIT",
   "private": false,
   "dependencies": {
