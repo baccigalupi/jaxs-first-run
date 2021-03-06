@@ -2,7 +2,6 @@
   "name": "jaxs",
   "version": "0.1.0",
   "description": "Front-end framework with reductive state and declarative jsx",
-  "main": "index.js",
   "repository": "https://www.github.com/baccigalupi/jaxs",
   "author": "Kane Baccigalupi",
   "license": "MIT",
